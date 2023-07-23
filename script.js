@@ -28,20 +28,18 @@ grid(defaultSizeOfGrid);
 function changeSize() {
   sizeBtn.addEventListener('click', () => {
     newSize = promptSize();
-    if (newSize == null || newSize == '' || newSize == false || !newSize) {
-      alert('Canceled!');
-      false;
-    } else if (newSize < 4 || newSize > 100) {
-      alert('Choose between 4 and 100!');
-      false;
-    } else {
-      container.replaceChildren();
-      sizedGrid(newSize);
-      defaultBrush();
-      blackBrush();
-      rainbowBrush();
-      cleanGrid();
+    if (newSize > 100) {
+      newSize = 100;
     }
+    if (newSize < 4 || newSize === '') {
+      newSize = 16;
+    }
+    container.replaceChildren();
+    sizedGrid(newSize);
+    defaultBrush();
+    blackBrush();
+    cleanGrid();
+    rainbowBrush();
   });
 }
 changeSize();
@@ -64,7 +62,7 @@ function sizedGrid(size) {
 function defaultBrush() {
   const allSquare = getSquares();
   allSquare.forEach((square) => {
-    square.addEventListener('mouseenter', () => {
+    const squareShift = square.addEventListener('mouseenter', () => {
       square.classList.add('paint');
     });
   });
@@ -73,48 +71,31 @@ defaultBrush();
 
 const blackBtn = document.querySelector('.black');
 const rainbowBtn = document.querySelector('.rainbow');
-let currentColorMode = toRainbow;
-
-function toRainbow() {
-  const arrRainbowColors = [
-    '#e81416', // Red
-    '#ffa500', // Orange
-    '#faeb36', // Yellow
-    '#79c314', // Green
-    '#487de7', // Blue
-    '#4b369d', // Indigo
-    '#70369d', // Violet
-  ];
-  return arrRainbowColors[Math.floor(Math.random() * arrRainbowColors.length)];
-}
 
 function rainbowBrush() {
   rainbowBtn.addEventListener('click', () => {
     const allSquare = getSquares();
     allSquare.forEach((squareEl) => {
-      squareEl.addEventListener(
-        'mouseenter',
-        () => {
-          squareEl.style.backgroundColor = `${toRainbow()}`;
-        },
-        { once: true }
-      );
+      squareEl.addEventListener('mouseenter', () => {
+        squareEl.style.backgroundColor = `rgb(${rgb()},${rgb()}, ${rgb()})`;
+      });
     });
   });
 }
 rainbowBrush();
 
+function rgb() {
+  let calcRGB = Math.floor(Math.random() * 255);
+  return calcRGB;
+}
+
 function blackBrush() {
   blackBtn.addEventListener('click', () => {
     const allSquare = getSquares();
     allSquare.forEach((squareEl) => {
-      squareEl.addEventListener(
-        'mouseenter',
-        () => {
-          squareEl.style.backgroundColor = `#111`;
-        },
-        { once: true }
-      );
+      squareEl.addEventListener('mouseenter', () => {
+        squareEl.style.backgroundColor = `#111`;
+      });
     });
   });
 }
@@ -125,8 +106,7 @@ function cleanGrid() {
   const cleanBtn = document.querySelector('.clean');
   const cleanFunc = cleanBtn.addEventListener('click', () => {
     allSquare.forEach((squareEl) => {
-      squareEl.style.backgroundColor = '';
-      squareEl.classList.remove('paint');
+      squareEl.style.backgroundColor = 'white';
     });
   });
 }
