@@ -1,9 +1,12 @@
 # Etch-a-Sketch
 
-### Created as part of [The Odin Project](https://www.theodinproject.com) Javascript curriculum.
+![etch](https://github.com/ena0berzerk/etchASketchV2/assets/110235307/00e315bf-dc07-483e-b06d-0bace3d9865d)
 
-# Preview: [The Odin Project](https://www.theodinproject.com)
+### Preview
+[Etch-a-Sketch](https://ena0berzerk.github.io/etchASketchV2/)
+
 
 ## Description
 
-A board on which you can draw in all the colors of the rainbow, resize the board, and delete what you have drawn
+You can draw with black and rainbow colors. Erase what you draw and resize board.
+
