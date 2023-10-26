@@ -1,4 +1,9 @@
-Starting Etch-A-Sketch V2 Project from The Odin Project 
-Curriculum
+# Etch-a-Sketch
 
-[Click to see project](https://ena0berzerk.github.io/etchASketchV2/)
+### Created as part of [The Odin Project](https://www.theodinproject.com) Javascript curriculum.
+
+# Preview: [The Odin Project](https://www.theodinproject.com)
+
+## Description
+
+A board on which you can draw in all the colors of the rainbow, resize the board, and delete what you have drawn
